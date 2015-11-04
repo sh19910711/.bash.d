@@ -1,0 +1,9 @@
+#!/bin/bash
+
+prolog() {
+  local git_root=$(git rev-parse --show-toplevel)
+  local rel=$(realpath --relative-base "${git_root}" "$(pwd)")
+  sudo docker run -w "/workspace/${rel}" -v "${git_root}:/workspace" -ti prolog $(printf " %q" gprolog "$@")
+}
+
+prolog "$@"
