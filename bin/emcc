@@ -1,0 +1,9 @@
+#!/bin/bash
+
+command() {
+  local git_root=$(git rev-parse --show-toplevel)
+  local rel=$(realpath --relative-base "${git_root}" "$(pwd)")
+  sudo docker run -u $(id -u):$(id -g) -v ${HOME}:/home/user -e HOME=/home/user -w "/workspace/${rel}" -v "${git_root}:/workspace" -ti emscripten $(printf " %q" emcc "$@")
+}
+
+command "$@"
