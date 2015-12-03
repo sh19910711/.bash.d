@@ -2,6 +2,6 @@
 
 ```bash
 # .bashrc
-source path/to/.bash.d/SOURCE_ME.bash
+source path/to/.bash.d/source_me.bash
 ```
 
