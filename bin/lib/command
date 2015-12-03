@@ -1,0 +1,7 @@
+# run command on git repository
+command_with_git() {
+  local command_name=$1; shift
+  local git_root=$(git rev-parse --show-toplevel)
+  local rel=$(realpath --relative-base "${git_root}" "$(pwd)")
+  sudo docker run -v ${HOME}:/home/user -u ${UID}:${GROUPS} -w "/workspace/${rel}" -e "HOME=/home/user" -v "${HOME}:/home/user" -v "${git_root}:/workspace" -ti .bash.d/${command_name} $(printf " %q" ${command_name} "$@")
+}

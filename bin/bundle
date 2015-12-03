@@ -1,9 +1,3 @@
 #!/bin/bash
-
-command() {
-  local git_root=$(git rev-parse --show-toplevel)
-  local rel=$(realpath --relative-base "${git_root}" "$(pwd)")
-  sudo docker run -v ${HOME}:/home/user -u $(id -u):$(id -g) -w "/workspace/${rel}" -e "HOME=/home/user" -v "${HOME}:/home/user" -v "${git_root}:/workspace" -ti bundle $(printf " %q" bundle "$@")
-}
-
-command "$@"
+source $(dirname ${BASH_SOURCE})/lib/command
+command_with_git bundle "$@"
