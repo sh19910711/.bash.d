@@ -1,9 +1,4 @@
 #!/bin/bash
 
-command() {
-  local git_root=$(git rev-parse --show-toplevel)
-  local rel=$(realpath --relative-base "${git_root}" "$(pwd)")
-  sudo docker run --privileged -u ${UID}:${GID} -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix -w "/workspace/${rel}" -v "${git_root}:/workspace" -ti java $(printf " %q" java "$@")
-}
-
-command "$@"
+echo TODO: add priviledged & GUI support
+echo TODO: add java without GUI
