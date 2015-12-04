@@ -1,7 +1,9 @@
-FROM ubuntu:14.04
+FROM base/archlinux:2015.06.01
 
-RUN apt-get -y update
-RUN apt-get install -y clang-3.4 llvm-3.4
-RUN apt-get install -y emscripten
-RUN apt-get install -y build-essential
-RUN apt-get install -y bison
+RUN pacman --noconfirm -Sy emscripten
+ENV PATH=/usr/lib/emscripten:${PATH}
+
+RUN pacman --noconfirm -Sy base-devel
+RUN pacman --noconfirm -Sy clang
+RUN ln /usr/bin/python2 /usr/bin/python
+ENV NODE=/usr/sbin/node
