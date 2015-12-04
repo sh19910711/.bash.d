@@ -17,5 +17,6 @@ command_with_git() {
   local image_name=${opt_image:-${command_name}}
   local git_root=$(git rev-parse --show-toplevel)
   local rel=$(realpath --relative-base "${git_root}" "$(pwd)")
+  echo cmd: $(printf " %q" ${real_command_name} "$@")
   sudo docker run -v ${HOME}:/home/user -u ${UID}:${GROUPS} -w "/workspace/${rel}" -e "HOME=/home/user" -v "${HOME}:/home/user" -v "${git_root}:/workspace" -ti .bash.d/${image_name} $(printf " %q" ${real_command_name} "$@")
 }
