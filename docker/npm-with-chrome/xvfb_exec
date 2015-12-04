@@ -1,0 +1,9 @@
+#!/bin/bash
+
+xvfb_exec() {
+  Xvfb ${DISPLAY} &
+  sleep 1
+  $@
+}
+
+xvfb_exec $@
