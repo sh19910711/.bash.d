@@ -1,4 +1,4 @@
-FROM ruby:2.2.3
+FROM ruby:2.2.4
 
 ENV GEM_HOME=/opt/gem
 ENV BUNDLE_APP_CONFIG=/home/user/.bundle
