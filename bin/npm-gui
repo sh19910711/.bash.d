@@ -1,3 +1,0 @@
-#!/bin/bash
-source $(dirname ${BASH_SOURCE})/lib/command.bash
-gui_command_with_git --command npm --image npm-gui $(basename ${BASH_SOURCE}) "$@"
