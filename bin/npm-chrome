@@ -1,3 +1,3 @@
 #!/bin/bash
 source $(dirname ${BASH_SOURCE})/lib/command.bash
-command_with_git --image npm-with-chrome --command xvfb_exec $(basename ${BASH_SOURCE}) npm "$@"
+gui_command_with_git --image npm-with-chrome --command xvfb_exec $(basename ${BASH_SOURCE}) npm "$@"
